@@ -1,0 +1,11 @@
+# request_accepted.yml
+---
+- name: Package install request accepted
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Notify about request result
+      debug:
+        msg: "Request created to install {{ packages }} on server {{ server }} was accepted"
+      # Additional tasks here to log or notify if needed
+

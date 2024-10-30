@@ -1,0 +1,10 @@
+# open_firewall.yml
+---
+- name: Install packages on selected server
+  hosts: "{{ server }}"  # Variable to dynamically select server
+  become: true
+  tasks:
+    - name: Install package
+      dnf:
+        name: "{{ packages }}"
+        state: present

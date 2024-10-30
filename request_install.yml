@@ -1,0 +1,11 @@
+# request_install.yml
+---
+- name: Create package install request
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Notify about the package install request
+      debug:
+        msg: "Request created to install package {{ packages }} on server {{ server }}"
+      # Additional tasks here to log or notify if needed
+
