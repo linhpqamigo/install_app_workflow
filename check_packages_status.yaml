@@ -1,0 +1,24 @@
+- name: Check installation state of httpd and firewalld
+  hosts: servera,serverb,serverc,serverd
+  gather_facts: false
+  tasks:
+
+    - name: Check if httpd is installed
+      ansible.builtin.shell: rpm -q httpd
+      register: httpd_check
+      changed_when: false
+      ignore_errors: true
+
+    - name: Check if firewalld is installed
+      ansible.builtin.shell: rpm -q firewalld
+      register: firewalld_check
+      changed_when: false
+      ignore_errors: true
+
+    - name: Display results
+      ansible.builtin.debug:
+        msg: |
+          Host: {{ inventory_hostname }}
+          HTTPD: {{ 'Installed' if httpd_check.rc == 0 else 'Not Installed' }}
+          Firewalld: {{ 'Installed' if firewalld_check.rc == 0 else 'Not Installed' }}
+
