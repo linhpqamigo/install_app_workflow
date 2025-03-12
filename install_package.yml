@@ -7,4 +7,4 @@
     - name: Install package
       dnf:
         name: "{{ packages }}"
-        state: "{{ packagers_state }}"
+        state: "{{ packages_state }}"
