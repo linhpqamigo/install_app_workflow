@@ -1,5 +1,5 @@
 - name: Check installation state of httpd and firewalld
-  hosts: servera,serverb,serverc,serverd
+  hosts: "{{ server }}"
   gather_facts: false
   tasks:
 
